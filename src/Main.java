@@ -36,7 +36,7 @@ DecimalFormat df = new DecimalFormat("#.##");
 System.out.println("________________________________\nCircles:");
 for(int i=0;i<c.length;i++)
 System.out.println((i+1)+"# Radius: "+df.format(c[i].getRadius())+" | Area: "+df.format(c[i].calculateArea())+" | Circumference: "+df.format(c[i].calculateCircumference()));
-System.out.println("________________________________\nRegtangles:");
+System.out.println("________________________________\nRectangles:");
 for(int i=0;i<r.length;i++)
 System.out.println((i+1)+"# Height: "+r[i].getHeight()+" | Width: "+r[i].getWidth()+" | Area: "+df.format(r[i].calculateArea())+" | Perimeter: "+df.format(r[i].calculateCircumference()));
 System.out.println("________________________________\nTriangles:");
