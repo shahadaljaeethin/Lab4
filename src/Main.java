@@ -10,12 +10,12 @@ try {
     c[2] = new Circle(5.3);
     c[3] = new Circle();
 //===============================
-    //create 4 of regtangle
-    Regtangle[] r = new Regtangle[4];
-    r[0] = new Regtangle(20.31,10.32);
-    r[1] = new Regtangle(10,10);
-    r[2] = new Regtangle(5.2,3.3);
-    r[3] = new Regtangle();
+    //create 4 of rectangle
+    Rectangle[] r = new Rectangle[4];
+    r[0] = new Rectangle(20.31,10.32);
+    r[1] = new Rectangle(10,10);
+    r[2] = new Rectangle(5.2,3.3);
+    r[3] = new Rectangle();
 //===============================
     //create 4 of triangles
     Triangle[] t = new Triangle[4];
@@ -30,7 +30,7 @@ try {
 }catch (Exception e){System.out.print(e.getMessage());}
 }
 //==============================
-public static void showInfo(Circle[] c,Triangle[] t,Regtangle[] r){
+public static void showInfo(Circle[] c, Triangle[] t, Rectangle[] r){
 DecimalFormat df = new DecimalFormat("#.##");
 
 System.out.println("________________________________\nCircles:");

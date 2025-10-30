@@ -1,7 +1,7 @@
-public class Regtangle extends Shape{
+public class Rectangle extends Shape{
     private double height,width;
-    public Regtangle(){height=1; width=1;}
-    public Regtangle(double height, double width) throws Exception{
+    public Rectangle(){height=1; width=1;}
+    public Rectangle(double height, double width) throws Exception{
         if(height<=0||width<=0) throw new Exception("length must be over zero.");
         this.height = height;
         this.width = width;
