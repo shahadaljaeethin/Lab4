@@ -1,8 +1,22 @@
 import java.text.DecimalFormat;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
+public static final String result = "\u001B[32m";   //red for X
+public static final String defultColor = "\u001B[0m";
+public static final String sample = "\u001B[33m";
+public static final String errorMessage = "\u001B[31m";   //red for X
+
 public  static void main(String[] args){
+    Scanner read = new Scanner(System.in);
+    int choice=0; double radius,height,width,base;
+    DecimalFormat df = new DecimalFormat("#.##");
+    Circle circle;
+    Triangle triangle;
+    Rectangle rectangle;
 try {
+
     //create 4 of circle
     Circle[] c = new Circle[4];
     c[0] = new Circle(3);
@@ -23,25 +37,63 @@ try {
     t[1] = new Triangle(15,15.5);
     t[2] = new Triangle(7.3,10);
     t[3] = new Triangle();
+//==================================================
+
+    while(choice!=5) {
+    try{
+        System.out.println("this is a calculator of a circle/triangle/rectangle 's area or perimeter.\n1.Circle\n2.Triangle\n3.Rectangle\n4.Show system sample\n5.No thanks!");
+        choice=read.nextInt();
+        switch (choice){
+            case 1: System.out.println("Enter the radius:");
+                    radius = read.nextDouble();
+                    circle = new Circle(radius);
+                    System.out.println(result+"#  Radius: "+df.format(circle.getRadius())+" | Area: "+df.format(circle.calculateArea())+" | Circumference: "+df.format(circle.calculateCircumference())+ defultColor);
+                    break;
+            case 2: System.out.println("Enter the height:");
+            height = read.nextDouble();
+            System.out.println("Enter the base:");
+            base = read.nextDouble();
+            triangle = new Triangle(height,base);
+            System.out.println(result+"#  Height: "+triangle.getHeight()+" | Base: "+triangle.getBase()+" | Area: "+df.format(triangle.calculateArea())+" | Perimeter: "+df.format(triangle.calculateCircumference())+ defultColor);
+            break;
+
+            case 3:
+                    System.out.println("Enter height:");
+                    height = read.nextDouble();
+                    System.out.println("Enter width:");
+                    width = read.nextDouble();
+                    rectangle = new Rectangle(height,width);
+                    System.out.println(result+"#  Height: "+rectangle.getHeight()+" | Width: "+rectangle.getWidth()+" | Area: "+df.format(rectangle.calculateArea())+" | Perimeter: "+df.format(rectangle.calculateCircumference())+ defultColor);
+
+            break;
+
+            case 4:     showInfo(c,t,r); break;
+
+            case 5: System.out.println("Hope you like it."); break;
+
+            default: System.out.println(errorMessage+"Please choose from 1-5"+defultColor);
+
+        }
+    }
 
 
-    showInfo(c,t,r);
-
-}catch (Exception e){System.out.print(e.getMessage());}
-}
+catch (InputMismatchException e){System.out.println(errorMessage+"Please enter numbers only"+defultColor); read.nextLine(); }
+catch (IndexOutOfBoundsException e) {System.out.println(errorMessage+"showing sample index and array error"+defultColor);}
+catch (Exception e){System.out.println(errorMessage+e.getMessage()+defultColor);}
+}}catch (Exception e){} }
 //==============================
 public static void showInfo(Circle[] c, Triangle[] t, Rectangle[] r){
 DecimalFormat df = new DecimalFormat("#.##");
 
 System.out.println("________________________________\nCircles:");
 for(int i=0;i<c.length;i++)
-System.out.println((i+1)+"# Radius: "+df.format(c[i].getRadius())+" | Area: "+df.format(c[i].calculateArea())+" | Circumference: "+df.format(c[i].calculateCircumference()));
+System.out.println(sample +(i+1)+"# Radius: "+df.format(c[i].getRadius())+" | Area: "+df.format(c[i].calculateArea())+" | Circumference: "+df.format(c[i].calculateCircumference())+defultColor);
 System.out.println("________________________________\nRectangles:");
 for(int i=0;i<r.length;i++)
-System.out.println((i+1)+"# Height: "+r[i].getHeight()+" | Width: "+r[i].getWidth()+" | Area: "+df.format(r[i].calculateArea())+" | Perimeter: "+df.format(r[i].calculateCircumference()));
+System.out.println(sample +(i+1)+"# Height: "+r[i].getHeight()+" | Width: "+r[i].getWidth()+" | Area: "+df.format(r[i].calculateArea())+" | Perimeter: "+df.format(r[i].calculateCircumference())+defultColor);
 System.out.println("________________________________\nTriangles:");
 for(int i=0;i<t.length;i++)
-System.out.println((i+1)+"# Height: "+t[i].getHeight()+" | Base: "+t[i].getBase()+" | Area: "+df.format(r[i].calculateArea())+" | Perimeter: "+df.format(r[i].calculateCircumference()));
+System.out.println(sample +(i+1)+"# Height: "+t[i].getHeight()+" | Base: "+t[i].getBase()+" | Area: "+df.format(r[i].calculateArea())+" | Perimeter: "+df.format(r[i].calculateCircumference())+defultColor);
 
 
 }
